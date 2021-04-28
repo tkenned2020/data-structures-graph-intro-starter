@@ -38,27 +38,30 @@ class Graph {
   }
 
   breadthFirstTraversal(startingVertex) {
-    // const visited = new Set();
-    // if(!visited.has(startingVertex)){
-    //   visited.add(startingVertex)
-    // }
-    //if first neighbor is not in visited set,
-    //go to that node
-    //add b to visited/ then check the b's first
-    //N is in visited.has(a) if not keep traversing
-    const visited = new Set();
-    const q = [startingVertex]
+
+    const visited = new Set(); // {'a' }
+    const q = [startingVertex] // [ c, d]
     while(q.length) {
-      let currentNode = q.shift()
-      if(!visited.has(currentNode)){
-          visited.add(currentNode)
-          q.push(this.adjList[currentNode][0])
-    }
-    console.log(visited)
-    allKeys = Object.keys(visited)
+      let currentKey = q.shift();
+      let currentNode = this.adjList[currentKey];
+      if(!visited.has(currentKey)){
+          visited.add(currentKey)
+          for(let i = 0; i < currentNode.length; i++) {
 
+            if(!visited.has(currentNode[i])) {
+              q.push(currentNode[i])
+            }
+          }
+        }
+      }
 
-  }}
+    // console.log(visited)
+    // allKeys = Object.keys(visited)
+    // console.log(visited);
+    console.log(Array.from(visited));
+    return Array.from(visited)
+
+  }
 
   depthFirstTraversalIterative(startingVertex) {
     // Code goes here ...
