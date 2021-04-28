@@ -31,11 +31,14 @@ class Graph {
 }
 
   buildGraph(edges) {
-    // Code goes here ...
+    // addEdge
+    edges.forEach(ele => this.addEdges(ele[0], ele[1]))
+    return this.adjList
+
   }
 
   breadthFirstTraversal(startingVertex) {
-    // Code goes here ...
+    
   }
 
   depthFirstTraversalIterative(startingVertex) {
