@@ -79,33 +79,42 @@ class Graph {
   depthFirstTraversalIterative(startingVertex) {
     // Code goes here ...
     ////Iterative solution
-    // const visited = new Set(); // {a}
-    // const result = []; // [a]
-    // const q = [startingVertex] // [d ]
-    // while(q.length) {
-    //   let currentKey = q.shift();
-    //   let currentNode = this.adjList[currentKey];
-    //   if(!visited.has(currentKey)){
-    //       visited.add(currentKey)
-    //       result.push(currentKey)
-    //       for(let i = currentNode.length - 1; i >= 0; i--) {
-    //         if(!visited.has(currentNode[i])) {
-    //           q.push(currentNode[i])
-    //           break
-    //         }
-    //       }
-    //     }
-    //   }
-    // return result
+    const visited = new Set(); // {a}
+    const result = []; // [a]
+    const q = [startingVertex] // [d ]
+    while(q.length) {
+      let currentKey = q.shift();
+      let currentNode = this.adjList[currentKey];
+      if(!visited.has(currentKey)){
+          visited.add(currentKey)
+          result.push(currentKey)
+          for(let i = currentNode.length - 1; i >= 0; i--) {
+            if(!visited.has(currentNode[i])) {
+              q.push(currentNode[i])
+              break
+            }
+          }
+        }
+      }
+    return result
 
   }
 
   depthFirstTraversalRecursive(
     startingVertex,
-    visited = new Set(),
-    vertices = []
+    visited = new Set(), //a, b, c, f, g, d
+    vertices = [] //a, b, c, f, g, d
   ) {
     // Code goes here ...
+    if (visited.has(startingVertex)) return;
+
+    visited.add(startingVertex);
+    vertices.push(startingVertex);
+    this.adjList[startingVertex].forEach(
+      neighbor => { this.depthFirstTraversalRecursive   (neighbor, visited, vertices)
+                  }
+    )
+  return vertices
   }
 }
 
@@ -131,7 +140,8 @@ class Graph {
         }
     }
 
-    console.log(graph)
+    console.log(graph);
+    graph.depthFirstTraversalRecursive('a')
 module.exports = {
   Graph,
 };
