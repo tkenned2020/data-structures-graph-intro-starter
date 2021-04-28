@@ -58,7 +58,7 @@ class Graph {
     allKeys = Object.keys(visited)
 
 
-  }
+  }}
 
   depthFirstTraversalIterative(startingVertex) {
     // Code goes here ...
@@ -73,7 +73,7 @@ class Graph {
   }
 }
 
-let graph;
+  let graph;
     const edges =
         [['a', 'b'],
         ['a', 'c'],
