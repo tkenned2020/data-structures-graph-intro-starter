@@ -1,16 +1,34 @@
-
 class Graph {
   constructor() {
-    // Code goes here ...
+    //understand
+    //this.adjList = new Object()
+    //plan
+    //
+    //execute
+    this.adjList = new Object();
   }
 
   addVertex(vertex) {
-    // Code goes here ...
+    if (!this.adjList[vertex]) {
+      this.adjList[vertex] = [];
+    }
   }
-
+  //{'a': [b], 'b': [a]}
   addEdges(srcValue, destValue) {
-    // Code goes here ...
+    this.addVertex(srcValue);
+    this.addVertex(destValue);
+    if (!this.adjList[srcValue].length) {
+      this.adjList[srcValue].push(destValue);
+    } else if (!this.adjList[srcValue].includes(destValue)) {
+      this.adjList[srcValue].push(destValue);
+    }
+
+    if (!this.adjList[destValue].length) {
+      this.adjList[destValue].push(srcValue);
+    } else if (!this.adjList[destValue].includes(srcValue)) {
+      this.adjList[destValue].push(srcValue)
   }
+}
 
   buildGraph(edges) {
     // Code goes here ...
@@ -24,21 +42,15 @@ class Graph {
     // Code goes here ...
   }
 
-  depthFirstTraversalRecursive(startingVertex, visited = new Set(), vertices = []) {
+  depthFirstTraversalRecursive(
+    startingVertex,
+    visited = new Set(),
+    vertices = []
+  ) {
     // Code goes here ...
   }
-
 }
 
 module.exports = {
-  Graph
+  Graph,
 };
-
-
-
-
-
-
-
-
-
