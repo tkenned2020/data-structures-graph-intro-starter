@@ -39,13 +39,31 @@ class Graph {
 
   breadthFirstTraversal(startingVertex) {
 
+    // const visited = new Set(); // {'a' }
+    // const q = [startingVertex] // [ c, d]
+    // while(q.length) {
+    //   let currentKey = q.shift();
+    //   let currentNode = this.adjList[currentKey];
+    //   if(!visited.has(currentKey)){
+    //       visited.add(currentKey)
+    //       for(let i = 0; i < currentNode.length; i++) {
+
+    //         if(!visited.has(currentNode[i])) {
+    //           q.push(currentNode[i])
+    //         }
+    //       }
+    //     }
+    //   }
+    // return Array.from(visited)
     const visited = new Set(); // {'a' }
+    const result = [];
     const q = [startingVertex] // [ c, d]
     while(q.length) {
       let currentKey = q.shift();
       let currentNode = this.adjList[currentKey];
       if(!visited.has(currentKey)){
           visited.add(currentKey)
+          result.push(currentKey)
           for(let i = 0; i < currentNode.length; i++) {
 
             if(!visited.has(currentNode[i])) {
@@ -54,17 +72,32 @@ class Graph {
           }
         }
       }
-
-    // console.log(visited)
-    // allKeys = Object.keys(visited)
-    // console.log(visited);
-    console.log(Array.from(visited));
-    return Array.from(visited)
-
+      // console.log(result);
+    return result
   }
 
   depthFirstTraversalIterative(startingVertex) {
     // Code goes here ...
+    ////Iterative solution
+    // const visited = new Set(); // {a}
+    // const result = []; // [a]
+    // const q = [startingVertex] // [d ]
+    // while(q.length) {
+    //   let currentKey = q.shift();
+    //   let currentNode = this.adjList[currentKey];
+    //   if(!visited.has(currentKey)){
+    //       visited.add(currentKey)
+    //       result.push(currentKey)
+    //       for(let i = currentNode.length - 1; i >= 0; i--) {
+    //         if(!visited.has(currentNode[i])) {
+    //           q.push(currentNode[i])
+    //           break
+    //         }
+    //       }
+    //     }
+    //   }
+    // return result
+
   }
 
   depthFirstTraversalRecursive(
